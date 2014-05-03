@@ -17,7 +17,14 @@ public class Main {
 		tree.insert(4, "Teste4");
 		tree.insert(5, "Teste5");
 		tree.insert(6, "Teste6");
-		tree.insert(7, "Teste7");		
+		tree.insert(7, "Teste7");
 		
+		try {
+			System.out.println(tree.searchValue(5).toString());
+		} catch (NullPointerException e) {
+			System.out.println("Elemento não encontrado");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

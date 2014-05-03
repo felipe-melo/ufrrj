@@ -12,10 +12,10 @@ public class B_Tree<T> {
 	}
 	
 	public void insert(Comparable<T> key, T value){
-		this.setRoot(this.insertInter(this.getRoot(), key, value));
+		this.setRoot(this.insert(this.getRoot(), key, value));
 	}
 	
-	private Page<T> insertInter(Page<T> page, Comparable<T> key, T value){
+	private Page<T> insert(Page<T> page, Comparable<T> key, T value){
 		if (page == null){
 			page = new Page<T>(this.getD());
 			Node<T> newOne = new Node<T>(key, value);
@@ -26,7 +26,7 @@ public class B_Tree<T> {
 			for(Node<T> aux : page.getElements()){				
 				if (aux.keyGreaterThan(key)){
 					if (aux.getPage() != null)
-						aux.setPage(insertInter(aux.getPage(), key, value));						
+						aux.setPage(insert(aux.getPage(), key, value));						
 					else{
 						Node<T> newOne = new Node<T>(key, value);
 						page.getElements().add(i, newOne);
@@ -39,7 +39,7 @@ public class B_Tree<T> {
 			}
 			if (flag){
 				if (page.getPage() != null)
-					page.setPage(insertInter(page.getPage(), key, value));
+					page.setPage(insert(page.getPage(), key, value));
 				else{
 					Node<T> newOne = new Node<T>(key, value);
 					page.getElements().add(newOne);
@@ -104,6 +104,25 @@ public class B_Tree<T> {
 		}
 		
 		return page;
+	}
+	
+	public T searchValue(Comparable<T> key) throws Exception{
+		return this.searchValue(key, this.getRoot());
+	}
+	
+	private T searchValue(Comparable<T> key, Page<T> page) throws Exception{
+		if (page == null){
+			return null;
+		}else{
+			for (Node<T> no: page.getElements()){
+				if (no.keyGreaterThan(key)){
+					return searchValue(key, no.getPage());
+				}else if (no.keyEqualsThan(key)){
+					return no.getValeu();
+				}
+			}
+			return searchValue(key, page.getPage());
+		}
 	}
 
 	public Page<T> getRoot() {

@@ -1,0 +1,23 @@
+package arvore.b;
+
+import java.util.ArrayList;
+
+public class Main {
+	
+	public ArrayList<Integer>[] arrayr =(ArrayList<Integer>[]) new ArrayList[10];
+	
+	public Integer[] a = new Integer[10];
+	public static void main(String[] args){
+		
+		B_Tree tree = new B_Tree(1);
+		
+		tree.insert(1, "Teste1");
+		tree.insert(2, "Teste2");
+		tree.insert(3, "Teste3");
+		tree.insert(4, "Teste4");
+		tree.insert(5, "Teste5");
+		tree.insert(6, "Teste6");
+		tree.insert(7, "Teste7");		
+		
+	}
+}

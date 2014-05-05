@@ -1,10 +1,7 @@
 package arvore.b;
 
-import java.util.ArrayList;
 
 public class Main {
-	
-	public ArrayList<Integer>[] arrayr =(ArrayList<Integer>[]) new ArrayList[10];
 	
 	public Integer[] a = new Integer[10];
 	public static void main(String[] args){

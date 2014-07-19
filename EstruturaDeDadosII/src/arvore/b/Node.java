@@ -1,45 +1,45 @@
 package arvore.b;
 
-public class Node<T> {
+public class Node<K, V> {
 	
-	private T valeu;
-	private Comparable<T> key;
-	private Page<T> page;
+	private V valeu;
+	private Comparable<K> key;
+	private Page<K, V> page;
 	private int height;
 	
-	public Node(Comparable<T> key, T value){
+	public Node(Comparable<K> key, V value){
 		this.setKey(key);
 		this.setValeu(value);
 	}
 	
-	public T getValeu() {
+	public V getValeu() {
 		return valeu;
 	}
-	public void setValeu(T valeu) {
+	public void setValeu(V valeu) {
 		this.valeu = valeu;
 	}
-	public Comparable<T> getKey() {
+	public Comparable<K> getKey() {
 		return key;
 	}
-	public void setKey(Comparable<T> key) {
+	public void setKey(Comparable<K> key) {
 		this.key = key;
 	}
-	public Page<T> getPage() {
+	public Page<K, V> getPage() {
 		return page;
 	}
-	public void setPage(Page<T> page) {
+	public void setPage(Page<K, V> page) {
 		this.page = page;
 	}
-	public boolean keyLowerThan(Comparable otherKey){
-		return this.getKey().compareTo((T) otherKey) < 0;
+	public boolean keyLowerThan(Comparable<K> otherKey){
+		return this.getKey().compareTo((K) otherKey) < 0;
 	}
 	
-	public boolean keyEqualsThan(Comparable otherKey){
-		return this.getKey().compareTo((T) otherKey) == 0;
+	public boolean keyEqualsThan(Comparable<K> otherKey){
+		return this.getKey().compareTo((K) otherKey) == 0;
 	}
 	
-	public boolean keyGreaterThan(Comparable otherKey){
-		return this.getKey().compareTo((T) otherKey) > 0;
+	public boolean keyGreaterThan(Comparable<K> otherKey){
+		return this.getKey().compareTo((K) otherKey) > 0;
 	}
 
 	public int getHeight() {

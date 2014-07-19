@@ -3,26 +3,33 @@ package arvore.b;
 import java.util.ArrayList;
 
 
-public class Page<T> {
+public class Page<K, V> {
 	
-	private ArrayList<Node<T>> elements;
-	private Page<T> father;
+	private ArrayList<Node<K, V>> elements;
+	private Page<K, V> father;
 	private int d;
-	private Page<T> page;
+	private Page<K, V> page;
 	private int height;
 	private boolean overFlow;
+	private boolean underFlow;
 	
 	public Page(int d){
 		this.setD(d);
-		this.setElements(new ArrayList<Node<T>>());
+		this.setElements(new ArrayList<Node<K, V>>());
 		this.setOverFlow(false);
+		this.setUnderFlow(false);
 	}
 	
 	public void checkLenght(){		
-		if (this.getQuant() == 2*d + 1)
+		if (this.getQuant() == 2*this.getD() + 1)
 			this.setOverFlow(true);
 		else{
 			this.setOverFlow(false);
+		}
+		if (this.getQuant() >= this.getD()){
+			this.setUnderFlow(false);
+		}else{
+			this.setUnderFlow(true);
 		}
 	}
 	
@@ -34,19 +41,19 @@ public class Page<T> {
 		return this.getElements().size();
 	}
 
-	public ArrayList<Node<T>> getElements() {
+	public ArrayList<Node<K, V>> getElements() {
 		return elements;
 	}
 
-	public void setElements(ArrayList<Node<T>> elements) {
+	public void setElements(ArrayList<Node<K, V>> elements) {
 		this.elements = elements;
 	}
 
-	public Page<T> getFather() {
+	public Page<K, V> getFather() {
 		return father;
 	}
 
-	public void setFather(Page<T> father) {
+	public void setFather(Page<K, V> father) {
 		this.father = father;
 	}
 
@@ -61,17 +68,10 @@ public class Page<T> {
 	public int getHeight() {
 		return height;
 	}
-
-	private int setHeightRec(Page<T> page) {
-		if (page == null){
-			return 1;
-		}else{
-			return this.height += this.setHeightRec(page.getPage());
-		}
-	}
 	
-	public void setHeight(){
-		this.height = 1;
+	public int setHeight(int height){
+		this.height = height;
+		return this.getHeight();
 	}
 
 	public boolean hasOverFlow() {
@@ -82,12 +82,20 @@ public class Page<T> {
 		this.overFlow = overFlow;
 	}
 
-	public Page<T> getPage() {
+	public Page<K, V> getPage() {
 		return page;
 	}
 
-	public void setPage(Page<T> page) {
+	public void setPage(Page<K, V> page) {
 		this.page = page;
+	}
+
+	public boolean hasUnderFlow() {
+		return underFlow;
+	}
+
+	public void setUnderFlow(boolean underFlow) {
+		this.underFlow = underFlow;
 	}
 	
 }

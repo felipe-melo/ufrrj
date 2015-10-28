@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+   	<body>
+		<ui:composition> 
+			<nav class="navbar navbar-inverse navbar-top">
+				<div class="container">
+					<div class="navbar-header">
+						<h:form>
+							<h:commandLink action="#{mainBean.reload}">
+					        	<h:graphicImage library="imagens" name="logo.png" action="#{mainBean.reload}"/>
+					        </h:commandLink>
+						</h:form>
+			       	</div>
+			       	<div id="navbar" class="navbar-collapse collapse">
+			        	<h:form class="navbar-form navbar-right">
+					        <h:panelGroup style="display:block; text-align:center" rendered="#{mainBean.isLogged == false}">
+								<div class="form-group">
+									<h:inputText value="#{mainBean.email}" styleClass="form-control"
+									title="#{msgs.email}" p:placeholder="#{msgs.email}"/>
+						        </div>
+						        <div class="form-group">
+						        	<h:inputSecret value="#{mainBean.senha}" styleClass="form-control"
+						        	title="#{msgs.senha}" p:placeholder="#{msgs.senha}"/>
+						        </div>
+					        	<h:commandButton styleClass="btn btn-success" value="#{msgs.login}" action="#{mainBean.login}"/>
+					        	<h:commandButton styleClass="btn btn-success" value="#{msgs.cadastrar}"
+					        	action="#{usuarioBean.openCadUsuario}" rendered="#{usuarioBean.showCad == true}"/>
+				        		<h:messages/>
+			        		</h:panelGroup>
+			        		<h:panelGroup style="margin: 0 auto;" rendered="#{mainBean.isLogged == true}">
+				        		<div class="form-group">
+				        			<div class="form-group">
+										#{msgs.usuario}: #{usuarioBean.getUsuarioNome()}
+									</div>
+						        	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+								    Menu<span class="caret"></span>
+								  	</button>
+							        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										<li role="presentation"><h:commandLink role="menuitem" tabindex="-1" value="#{msgs.meu_perfil}" action="#{usuarioBean.openCadUsuario}"/></li>
+										<li role="presentation"><h:commandLink role="menuitem" tabindex="-1" value="#{msgs.historico}" action="#{usuarioBean.openHitorico}"/></li>
+										<li role="presentation"><h:commandLink role="menuitem" tabindex="-1" value="#{msgs.cad_produto}" action="#{produtoBean.openCadProduto}"/></li>
+										<li role="presentation" tabindex="-1" class="divider"></li>
+										<li role="presentation"><h:commandLink role="menuitem" tabindex="-1" value="#{msgs.logout}" action="#{mainBean.logout()}"/></li>
+									</ul>
+									<h:messages/>
+								</div>
+							</h:panelGroup>
+						</h:form>
+					</div>
+				</div>
+			</nav>
+		</ui:composition>	
+   </body>
+</html>

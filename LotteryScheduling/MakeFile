@@ -1,0 +1,4 @@
+all:
+
+	g++ main.cpp -o main.exe -lpthread
+	./main.exe 2 big.dat 2 > results

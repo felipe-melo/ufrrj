@@ -1,0 +1,11 @@
+main(){
+	int a;
+	read(a);
+	if (a = 1)
+		write(1);
+	elif(a = 2)
+		write(2);
+	else
+		write(3);
+	write(a);
+}

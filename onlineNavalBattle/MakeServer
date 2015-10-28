@@ -1,0 +1,4 @@
+all:
+
+	g++ server.cpp -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -o server.exe
+	./server.exe

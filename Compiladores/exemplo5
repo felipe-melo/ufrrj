@@ -1,0 +1,4 @@
+main(){
+	string a, b, c;
+	read (a, b, c);
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	<h:head>
+		<title><ui:insert name="pageTitle">CCompra</ui:insert></title>
+		<h:outputScript library="js" name="jquery.min.js"/>
+		<h:outputScript library="js" name="bootstrap.js"/>
+		<h:outputScript library="js" name="dropdown.js"/>
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	</h:head>
+	<h:body>
+		<ui:insert name="header">
+		   <ui:include src="/WEB-INF/templates/header.xhtml" />
+		</ui:insert>
+		<ui:insert name="content">
+		   <ui:include src="/WEB-INF/templates/carrinho_detalhe.xhtml" />
+		</ui:insert>    
+		<ui:insert name="footer">
+		   <ui:include src="/WEB-INF/templates/footer.xhtml" />
+		</ui:insert>
+	</h:body>
+</html>

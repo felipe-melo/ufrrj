@@ -1,0 +1,17 @@
+int a;
+
+main(){
+	string str1, str2;
+	int a;
+
+	read(str1, a);
+
+	str2 <- str1 & a;
+
+	if (str1 = str2){
+		write("igual");
+	}
+
+	write(str1);
+	write(str2);
+}

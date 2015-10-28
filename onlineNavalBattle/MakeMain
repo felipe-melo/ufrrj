@@ -1,0 +1,4 @@
+all:
+
+	g++ main.cpp -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -o main.exe
+	./main.exe 7777

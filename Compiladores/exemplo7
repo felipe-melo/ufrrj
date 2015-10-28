@@ -1,0 +1,16 @@
+main(){
+	string a <- "teste";
+	switch (a) {
+		case "1":
+			write(1);
+			break;
+		case 2:
+			write(2);
+		case 3:
+			write(3);
+		case 4:
+			write(4);
+		case 5:
+			write(5);
+	}
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:m="http://primefaces.org/ui">
+   	<body>
+		<ui:composition>
+			<div class="container">
+				<div class="row">
+				    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+						<h:form role="form">
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.nome}" class="form-control input-lg" tabindex="1"
+								p:placeholder="#{msgs.nome}" maxlength="50"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.login.email}" class="form-control input-lg" tabindex="2" 
+								p:placeholder="#{msgs.email}" maxlength="100"/>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<h:inputSecret value="#{usuarioBean.usuario.login.senha}" class="form-control input-lg"
+										tabindex="3" p:placeholder="#{msgs.senha}" maxlength="50"/>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="form-group">
+										<h:inputSecret value="#{usuarioBean.usuario.login.confSenha}" class="form-control input-lg"
+										tabindex="4" p:placeholder="#{msgs.confSenha}" maxlength="50"/>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{usuarioBean.usuario.cpf}" class="form-control input-lg"
+								tabindex="5" p:placeholder="#{msgs.cpf}" maxlength="15" mask="999.999.999-99"/>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{usuarioBean.usuario.rg}" class="form-control input-lg"
+								tabindex="6" p:placeholder="#{msgs.rg}" maxlength="12" mask="99.999.999-9"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.logradouro}" class="form-control input-lg"
+								tabindex="7" p:placeholder="#{msgs.logradouro}"  maxlength="70"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.numero}" class="form-control input-lg"
+								tabindex="8" p:placeholder="#{msgs.numero}" maxlength="7"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.bairro}" class="form-control input-lg"
+								tabindex="9" p:placeholder="#{msgs.bairro}" maxlength="50"/>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{usuarioBean.usuario.endereco.cep}" class="form-control input-lg"
+								tabindex="10" p:placeholder="#{msgs.cep}" maxlength="9" mask="99999-999"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.cidade}" class="form-control input-lg"
+								tabindex="11" p:placeholder="#{msgs.cidade}" maxlength="30"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.uf}" class="form-control input-lg"
+								tabindex="12" p:placeholder="#{msgs.uf}" maxlength="2"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.endereco.complemento}" class="form-control input-lg"
+								tabindex="13" p:placeholder="#{msgs.complemento}" maxlength="20"/>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{usuarioBean.usuario.dataNascimento}" class="form-control input-lg"
+								tabindex="14" p:placeholder="#{msgs.dataNascimento}" maxlength="10" mask="99/99/9999">
+								<f:convertDateTime pattern="dd/mm/yyyy"/>
+								</h:inputText>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{usuarioBean.usuario.telefone}" class="form-control input-lg"
+								tabindex="15" p:placeholder="#{msgs.telefone}" maxlength="15" mask="99999-9999"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{usuarioBean.usuario.nivel}" class="form-control input-lg"
+								tabindex="16" p:placeholder="#{msgs.nivel}" maxlength="1"/>
+							</div>
+							<h:commandButton styleClass="btn btn-success" value="#{msgs.salvar}"
+						        	action="#{usuarioBean.salvar}"/>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:composition>
+	</body>
+</html>

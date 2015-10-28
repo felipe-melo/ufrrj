@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+   	<body>
+		<ui:composition> 
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+				        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				        		data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					        <span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+				        </button>
+				        <a class="navbar-brand" href="#">CCompra</a>
+			       	</div>
+			       	<div id="navbar" class="navbar-collapse collapse">
+				        <form class="navbar-form navbar-right">
+							<div class="form-group">
+								#{msgs.usuario}: #{mainBean.usuario.nome}"
+					        </div>
+					        <h:form>
+				        	<h:commandButton styleClass="btn btn-success" value="#{msgs.logout}"
+				        	action="#{mainBean.logout()}"/>
+				        	<h:messages/>
+				        	</h:form>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</ui:composition>
+	</body>
+</html>

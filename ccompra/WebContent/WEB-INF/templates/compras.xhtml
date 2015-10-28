@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<body>
+		<ui:composition>
+			<h:form>
+				<div class="container">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>Histórico</h3>
+						</div>
+							<div class="panel-body">
+								<ui:repeat value="#{usuarioBean.pedidos}" var="pedido">
+									<div class="row">
+										<h:form>
+											<div class="col-12 col-lg-12">
+												<h:outputText value="#{pedido.data}"/>
+												<table class="table table-striped">
+													<thead>
+														<tr>
+															<th>Item</th>
+															<th>Quantidade</th>
+															<th>Preço</th>
+															<th>Desconto</th>
+															<th>Total</th>														
+														</tr>
+													</thead>
+													<tbody><!-- fazer o repeat aqui -->
+														<ui:repeat value="#{pedido.items}" var="item" varStatus="status">
+															<tr>
+																<td><h:outputText value="#{item.produto.nome}"/></td>
+																<td><h:outputText value="#{pedido.items.get(status.index).quantidade}"/></td>
+																<td><h:outputText value="#{item.produto.preco}"/></td>
+																<td><h:outputText value="#{item.produto.desconto}"/></td>
+																<td><h:outputText value="#{item.precoTotal}"/></td>
+															</tr>
+														</ui:repeat>
+													</tbody>
+												</table>
+												<hr>
+													<dl class="dl-horizontal pull-right"> 
+														<dt>Total:</dt>
+														<dd><h:outputText value="#{pedido.total}"/></dd>
+													</dl>
+													<div class="clearfix"></div>
+												</hr>
+											</div>
+										</h:form>
+									</div>
+								</ui:repeat>
+							</div>
+							<div class="panel-footer">
+								<div class="row">
+									<div class="col-lg-12">										
+										<h:commandLink class="navbar-brand" action="#{mainBean.reload()}">Voltar para a loja</h:commandLink>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- /container -->
+					<h:outputScript rendered="#{produtoBean.showErroLoginAlert}">
+						alert("Você deve estar logado para finalizar a compra");
+					</h:outputScript>
+					<h:outputScript rendered="#{produtoBean.showSucessoAlert}">
+						alert("Compra finalizada com sucesso");
+					</h:outputScript>
+					<h:outputScript rendered="#{produtoBean.showErroAlert}">
+						alert("A compra não pode ser realizar, tente mais tarde");
+					</h:outputScript>
+			</h:form>
+		</ui:composition>
+	</body>
+</html>

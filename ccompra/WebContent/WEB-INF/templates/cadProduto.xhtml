@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:m="http://primefaces.org/ui">
+   	<body>
+		<ui:composition>
+			<div class="container">
+				<div class="row">
+				    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+						<h:form id="cadProduto" role="form" enctype="multipart/form-data">
+							<div class="form-group">
+								<h:inputText value="#{produtoBean.produto.nome}" class="form-control input-lg" tabindex="1"
+								p:placeholder="#{msgs.nome}"/>
+							</div>
+							<div class="form-group">
+								<m:inputMask id="preco" value="#{produtoBean.produto.preco}" class="form-control input-lg" tabindex="2"
+								p:placeholder="#{msgs.preco}" mask="R$ #.##9,99">
+									<f:convertNumber type="currency" groupingUsed="false"/>
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.peso}" class="form-control input-lg" tabindex="3"
+								p:placeholder="#{msgs.peso}" mask="999">
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{produtoBean.produto.cor}" class="form-control input-lg" tabindex="4"
+								p:placeholder="#{msgs.cor}">
+								</h:inputText>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{produtoBean.produto.marca}" class="form-control input-lg" tabindex="5"
+								p:placeholder="#{msgs.marca}">
+								</h:inputText>
+							</div>
+							<div class="form-group">
+								<h:inputTextarea value="#{produtoBean.produto.descricao}" class="form-control input-lg" tabindex="6"
+								p:placeholder="#{msgs.descricao}"/>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.tamanho.largura}" class="form-control input-lg" tabindex="7"
+								p:placeholder="#{msgs.largura}" mask="9999 cm">
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.tamanho.comprimento}" class="form-control input-lg" tabindex="8"
+								p:placeholder="#{msgs.comprimento}" mask="9999 cm">
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.tamanho.altura}" class="form-control input-lg" tabindex="9"
+								p:placeholder="#{msgs.altura}" mask="9999 cm">
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.desconto}" class="form-control input-lg" tabindex="10"
+								p:placeholder="#{msgs.desconto}" mask="R$ #.##9,99">
+									<f:convertNumber type="currency" groupingUsed="false"/>
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<m:inputMask value="#{produtoBean.produto.estoque.quantidade}" class="form-control input-lg" tabindex="10"
+								p:placeholder="#{msgs.quantidade}" mask="9999">
+								</m:inputMask>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{produtoBean.produto.imagem}" class="form-control input-lg" tabindex="10"
+								p:placeholder="#{msgs.imagem}"/>
+							</div>
+							<h:commandButton styleClass="btn btn-success" value="Salvar" action="#{produtoBean.salvar}"/>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:composition>
+	</body>
+</html>

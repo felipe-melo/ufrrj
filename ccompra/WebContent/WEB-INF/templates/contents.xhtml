@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<body>
+		<ui:composition>
+			<h:form>
+				<div class="container">
+					<div class="row">
+						<div class="jumbotron">
+							<h:form>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 pull-right" style="z-index:1020 !important">
+									<h:commandButton styleClass="btn btn-primary btn-lg" value="#{produtoBean.totalCarrinho}" action="#{produtoBean.finalizar}"/>
+								</div>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="margin-bottom:10px;">
+									<h:form styleClass="form-search">
+										<div class="input-group">
+											<h:inputText binding="#{pesq}" styleClass="form-control input-lg" p:placeholder="Pesquisar"/>
+											<span class="input-group-btn">
+												<h:commandButton styleClass="btn btn-primary btn-lg" value="Pesquisar" action="#{produtoBean.pesquisar(pesq.value)}"/>
+											</span>
+										</div>
+									</h:form>
+								</div>
+							</h:form>
+						</div>
+					</div>
+					<div class="row">
+						<ui:repeat value="#{produtoBean.produtos}" var="produto" varStatus="status">
+							<div style="width:550px !important" class="col-sm-4 col-lg-4 col-md-4">		
+		                        <div class="thumbnail">
+		                        	<h:graphicImage library="imagens" name="#{produto.imagem}" alt="#{produdo.alt}" style="max-width:320; max-height:150"></h:graphicImage>
+		                            <div class="caption">
+		                            	<h:outputText styleClass="h4" class="pull-right" value="#{produto.preco}"></h:outputText>
+		                            	<h:outputText styleClass="h4" value="#{produto.nome}"></h:outputText><br/>
+		                            	<h:outputText styleClass="p" value="#{produto.descricao}"></h:outputText>
+		                            </div>
+		                            <p>
+		                            	<h:commandButton styleClass="btn btn-success" value="Comprar" action="#{produtoBean.addCarrinho(produto)}"/>
+		                            </p>
+		                        </div>
+		                    </div>
+		                    <h:outputLabel style="width:500px !important" rendered="#{status.index % 2 == 1}"></h:outputLabel>
+						</ui:repeat>
+					</div>
+					<ul class="pagination">
+						<ui:repeat value="#{produtoBean.paginas}" var="p">
+							<li><h:commandButton value="#{p.numero}" action="#{produtoBean.next(p.numero)}"/></li>
+						</ui:repeat>
+					</ul>
+				</div>
+				<h:outputScript rendered="#{produtoBean.emptyCarrinho}">
+					alert("Por favor selecione algum produto");
+				</h:outputScript>
+			</h:form>
+		</ui:composition>
+	</body>
+</html>
